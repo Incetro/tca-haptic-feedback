@@ -22,7 +22,7 @@ let package = Package(
         .package(
             name: "TCA",
             url: "https://github.com/monession/tca",
-            branch: "fix/case_path"
+            branch: "master"
         )
     ],
     targets: [

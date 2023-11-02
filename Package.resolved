@@ -33,8 +33,8 @@
         "repositoryURL": "https://github.com/apple/swift-collections",
         "state": {
           "branch": null,
-          "revision": "937e904258d22af6e447a0b72c0bc67583ef64a2",
-          "version": "1.0.4"
+          "revision": "a902f1823a7ff3c9ab2fba0f992396b948eda307",
+          "version": "1.0.5"
         }
       },
       {
@@ -42,8 +42,8 @@
         "repositoryURL": "https://github.com/pointfreeco/swift-concurrency-extras",
         "state": {
           "branch": null,
-          "revision": "ea631ce892687f5432a833312292b80db238186a",
-          "version": "1.0.0"
+          "revision": "6155400cb15b0d99b2c257d57603d61d03a817a8",
+          "version": "1.0.1"
         }
       },
       {
@@ -51,8 +51,17 @@
         "repositoryURL": "https://github.com/pointfreeco/swift-custom-dump",
         "state": {
           "branch": null,
-          "revision": "3efbfba0e4e56c7187cc19137ee16b7c95346b79",
-          "version": "1.1.0"
+          "revision": "65fc9e2b62727cacfab9fc60d580c284a4b9308c",
+          "version": "1.1.1"
+        }
+      },
+      {
+        "package": "swift-dependencies",
+        "repositoryURL": "https://github.com/pointfreeco/swift-dependencies",
+        "state": {
+          "branch": null,
+          "revision": "4e1eb6e28afe723286d8cc60611237ffbddba7c5",
+          "version": "1.0.0"
         }
       },
       {
@@ -75,10 +84,10 @@
       },
       {
         "package": "swift-tca",
-        "repositoryURL": "https://github.com/monession/tca",
+        "repositoryURL": "https://github.com/Incetro/TCA",
         "state": {
-          "branch": "fix/case_path",
-          "revision": "6faba7803381bc82aeb0b72aea4dd03788a2e187",
+          "branch": "main",
+          "revision": "1bc1107c94531c41764b2f2e401765cdb6868aee",
           "version": null
         }
       },

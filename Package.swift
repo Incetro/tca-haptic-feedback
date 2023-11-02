@@ -19,13 +19,17 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/Incetro/TCA", .branch("main"))
+        .package(
+            name: "TCA",
+            url: "https://github.com/monession/tca",
+            branch: "master"
+        )
     ],
     targets: [
         .target(
             name: "TCAHapticFeedback",
             dependencies: [
-                .product(name: "ComposableArchitecture", package: "TCA")
+                .product(name: "TCA", package: "TCA")
             ]
         )
     ]

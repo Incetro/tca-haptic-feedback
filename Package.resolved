@@ -56,6 +56,15 @@
         }
       },
       {
+        "package": "swift-dependencies",
+        "repositoryURL": "https://github.com/pointfreeco/swift-dependencies",
+        "state": {
+          "branch": null,
+          "revision": "4e1eb6e28afe723286d8cc60611237ffbddba7c5",
+          "version": "1.0.0"
+        }
+      },
+      {
         "package": "swift-identified-collections",
         "repositoryURL": "https://github.com/pointfreeco/swift-identified-collections",
         "state": {
@@ -75,10 +84,10 @@
       },
       {
         "package": "swift-tca",
-        "repositoryURL": "https://github.com/monession/tca",
+        "repositoryURL": "https://github.com/Incetro/TCA",
         "state": {
-          "branch": "master",
-          "revision": "33c9bf0226cc8279859a0b6686cde3fe4ac0a512",
+          "branch": "main",
+          "revision": "1bc1107c94531c41764b2f2e401765cdb6868aee",
           "version": null
         }
       },

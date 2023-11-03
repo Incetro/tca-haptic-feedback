@@ -1,5 +1,5 @@
 import UIKit
-import TCA
+import ComposableArchitecture
 import Combine
 
 // MARK: - SelectionFeedbackGeneratorImplementation
@@ -11,7 +11,7 @@ public final class SelectionFeedbackGeneratorImplementation {
 
 extension SelectionFeedbackGeneratorImplementation: SelectionFeedbackGenerator {
 
-    public func create(id: AnyHashable) -> Effect<Never, Never> {
+    public func create(id: AnyHashable) -> Effect<Never> {
         .run { subscriber in
             let generator = UISelectionFeedbackGenerator()
             dependencies[id] = Dependency(
@@ -24,14 +24,14 @@ extension SelectionFeedbackGeneratorImplementation: SelectionFeedbackGenerator {
         }
     }
 
-    public func destroy(id: AnyHashable) -> Effect<Never, Never> {
+    public func destroy(id: AnyHashable) -> Effect<Never> {
         .fireAndForget {
             dependencies[id]?.subscriber.send(completion: .finished)
             dependencies[id] = nil
         }
     }
 
-    public func selectionChanged(id: AnyHashable) -> Effect<Never, Never> {
+    public func selectionChanged(id: AnyHashable) -> Effect<Never> {
         .fireAndForget {
             guard let generator = dependencies[id]?.generator as? UISelectionFeedbackGenerator else {
                 return
@@ -40,7 +40,7 @@ extension SelectionFeedbackGeneratorImplementation: SelectionFeedbackGenerator {
         }
     }
 
-    public func prepare(id: AnyHashable) -> Effect<Never, Never> {
+    public func prepare(id: AnyHashable) -> Effect<Never> {
         .fireAndForget {
             guard let generator = dependencies[id]?.generator as? UISelectionFeedbackGenerator else {
                 return

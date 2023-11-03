@@ -1,4 +1,4 @@
-import TCA
+import ComposableArchitecture
 import UIKit
 import Combine
 
@@ -11,7 +11,7 @@ public final class NotificationFeedbackGeneratorImplementation {
 
 extension NotificationFeedbackGeneratorImplementation: NotificationFeedbackGenerator {
 
-    public func create(id: AnyHashable) -> Effect<Never, Never> {
+    public func create(id: AnyHashable) -> Effect<Never> {
         .run { subscriber in
             let generator = UINotificationFeedbackGenerator()
             dependencies[id] = Dependency(
@@ -24,14 +24,14 @@ extension NotificationFeedbackGeneratorImplementation: NotificationFeedbackGener
         }
     }
 
-    public func destroy(id: AnyHashable) -> Effect<Never, Never> {
+    public func destroy(id: AnyHashable) -> Effect<Never> {
         .fireAndForget {
             dependencies[id]?.subscriber.send(completion: .finished)
             dependencies[id] = nil
         }
     }
 
-    public func notificationOccurred(id: AnyHashable, type: UINotificationFeedbackGenerator.FeedbackType) -> Effect<Never, Never> {
+    public func notificationOccurred(id: AnyHashable, type: UINotificationFeedbackGenerator.FeedbackType) -> Effect<Never> {
         .fireAndForget {
             guard let generator = dependencies[id]?.generator as? UINotificationFeedbackGenerator else {
                 return
@@ -40,7 +40,7 @@ extension NotificationFeedbackGeneratorImplementation: NotificationFeedbackGener
         }
     }
 
-    public func prepare(id: AnyHashable) -> Effect<Never, Never> {
+    public func prepare(id: AnyHashable) -> Effect<Never> {
         .fireAndForget {
             guard let generator = dependencies[id]?.generator as? UINotificationFeedbackGenerator else {
                 return

@@ -1,4 +1,4 @@
-import TCA
+import ComposableArchitecture
 import UIKit
 import Combine
 
@@ -11,7 +11,7 @@ public final class ImpactFeedbackGeneratorImplementation {
 
 extension ImpactFeedbackGeneratorImplementation: ImpactFeedbackGenerator {
 
-    public func create(id: AnyHashable, style: UIImpactFeedbackGenerator.FeedbackStyle) -> Effect<Never, Never> {
+    public func create(id: AnyHashable, style: UIImpactFeedbackGenerator.FeedbackStyle) -> Effect<Never> {
         .run { subscriber in
             let generator = UIImpactFeedbackGenerator(style: style)
             dependencies[id] = Dependency(
@@ -24,28 +24,28 @@ extension ImpactFeedbackGeneratorImplementation: ImpactFeedbackGenerator {
         }
     }
 
-    public func destroy(id: AnyHashable) -> Effect<Never, Never> {
+    public func destroy(id: AnyHashable) -> Effect<Never> {
         .fireAndForget {
             dependencies[id]?.subscriber.send(completion: .finished)
             dependencies[id] = nil
         }
     }
 
-    public func impactOccurred(id: AnyHashable) -> Effect<Never, Never> {
+    public func impactOccurred(id: AnyHashable) -> Effect<Never> {
         .fireAndForget {
             guard let generator = dependencies[id]?.generator as? UIImpactFeedbackGenerator else { return }
             generator.impactOccurred()
         }
     }
 
-    public func impactOccurred(id: AnyHashable, withIntensity intensity: CGFloat) -> Effect<Never, Never> {
+    public func impactOccurred(id: AnyHashable, withIntensity intensity: CGFloat) -> Effect<Never> {
         .fireAndForget {
             guard let generator = dependencies[id]?.generator as? UIImpactFeedbackGenerator else { return }
             generator.impactOccurred(intensity: intensity)
         }
     }
 
-    public func prepare(id: AnyHashable) -> Effect<Never, Never> {
+    public func prepare(id: AnyHashable) -> Effect<Never> {
         .fireAndForget {
             guard let generator = dependencies[id]?.generator as? UIImpactFeedbackGenerator else { return }
             generator.prepare()
